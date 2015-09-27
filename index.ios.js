@@ -7,12 +7,17 @@
 var React = require('react-native');
 var {
   AppRegistry,
+  StatusBarIOS,
   StyleSheet,
   Text,
   View,
 } = React;
 
 var ScriptRunner = React.createClass({
+  componentWillMount: function() {
+    StatusBarIOS.setStyle(1); // Set status bar to white
+  },
+  
   render: function() {
     return (
       <View style={styles.container}>
@@ -31,7 +36,8 @@ var styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#131125',
-    padding: 10,
+    paddingTop: 20,
+    paddingLeft: 10,
     color: 'white',
   },
   center: {
@@ -40,8 +46,9 @@ var styles = StyleSheet.create({
     alignItems: 'center',
   },
   header: {
+    fontFamily: "AvenirNext-Ultralight",
     color: 'white',
-    fontSize: 30,
+    fontSize: 35,
   },
   box: {
     transform: [{rotate:'-30deg'}]
