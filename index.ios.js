@@ -5,11 +5,14 @@
 'use strict';
 
 var React = require('react-native');
-var {AppRegistry, Image, StatusBarIOS, StyleSheet, Text, View} = React;
+var {AppRegistry, Image, StatusBarIOS, StyleSheet, Text, TouchableOpacity, View} = React;
 var Tile = require('./src/tile');
 
 var ScriptRunner = React.createClass({
   componentWillMount: function() {
+    this.state = {
+      tiles: ["Shaheen2", "test", "hazaa"]
+    };
     StatusBarIOS.setStyle(1); // Set status bar to white
   },
 
@@ -17,14 +20,31 @@ var ScriptRunner = React.createClass({
     return (
       <View style={styles.container}>
         <Text style={styles.header}>Script Runner</Text>
-        <View style={styles.center}>
-          <Tile title="Shaheen2"></Tile>
-        </View>
-        <View style={styles.addIconBox}>
+        {this.renderTiles()}
+        <TouchableOpacity style={styles.addIconBox} onPress={this.onPress}>
           <Image source={require('image!add13')} style={styles.addIconImage}/>
-        </View>
+        </TouchableOpacity>
       </View>
     );
+  },
+
+  renderTiles: function() {
+    var tiles = [];
+    for (var i = 0; i < this.state.tiles.length; i++) {
+      tiles.push(
+        <Tile title={this.state.tiles[i]} ></Tile>
+      );
+    }
+
+    return (
+      <View style={styles.center}>
+        {tiles}
+      </View>
+    );
+  },
+
+  onPress: function(evt) {
+    console.log(evt);
   }
 });
 
@@ -43,8 +63,7 @@ var styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#131125',
     paddingTop: 20,
-    paddingLeft: 10,
-    color: 'white'
+    paddingLeft: 10
   },
   center: {
     flex: 1,
