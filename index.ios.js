@@ -32,7 +32,7 @@ var ScriptRunner = React.createClass({
     var tiles = [];
     for (var i = 0; i < this.state.tiles.length; i++) {
       tiles.push(
-        <Tile title={this.state.tiles[i]} ></Tile>
+        <Tile key={"tile" + i} title={this.state.tiles[i]} ></Tile>
       );
     }
 
