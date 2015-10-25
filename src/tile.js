@@ -1,10 +1,7 @@
+'use strict';
 
 var React = require('react-native');
-var {
-  StyleSheet,
-  Text,
-  View,
-} = React;
+var {StyleSheet, Text, View} = React;
 
 var Tile = React.createClass({
   render: function() {
@@ -18,7 +15,7 @@ var Tile = React.createClass({
 
 var styles = StyleSheet.create({
   box: {
-    transform: [{rotate:'-30deg'}],
+    transform: [{rotate: '-30deg'}],
     borderColor: 'white',
     borderWidth: 2,
     padding: 40,
